@@ -40,25 +40,21 @@
             <?php
                 $topic = 'Delhi';
                 $api = "https://newsapi.org/v2/everything?q=$topic&from=2022-11-09&sortBy=publishedAt&apiKey=2f963f3877834b5ab0e8dd118df5a875";
-                
-                // Initialize a CURL session.
+
                 $ch = curl_init();
                 
-                // Return Page contents.
+
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
                 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
                     'user-agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
                 ));
                 
-                //grab URL and pass it to the variable.
                 curl_setopt($ch, CURLOPT_URL, $api);
                 
                 $result = curl_exec($ch);
                 $news = json_decode($result, true);
                 
-                // echo $result;
-            
-                // var_dump($news);
+
                 // exit();
                 foreach($news['articles'] as $value) {?> 
                     <div class="card">
